@@ -5,7 +5,7 @@ import Hero from '../components/Hero'
 function Home() {
     console.log('Home')
   return (
-    <div className='bg-[#181c26] w-full h-full text-white'>
+    <div className='primary-bg w-full h-screen  text-white'>
         <Nav/>
         <Hero/>
     </div>

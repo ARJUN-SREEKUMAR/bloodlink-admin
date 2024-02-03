@@ -19,7 +19,7 @@ Before you begin, ensure you have the following installed:
    ```bash
    git clone https://github.com/your-username/blood-link-admin.git
    cd blood-link-admin
-   npm install
+   npm ci
    npm run dev
    Visit http://localhost:3000 in your browser to access the Blood Link Admin dashboard.
 

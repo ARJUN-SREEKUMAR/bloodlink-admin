@@ -1,0 +1,19 @@
+
+
+.primary-bg {
+    --tw-bg-opacity: 1;
+    background-color: rgb(24 28 38 / var(--tw-bg-opacity));
+}
+
+.primary-font{
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+      
+}
+/* .primary-bg {
+    
+    background-color: rgb(24 28 38 / 1);
+background-image: url("https://www.transparenttextures.com/patterns/black-lozenge.png");
+} */
