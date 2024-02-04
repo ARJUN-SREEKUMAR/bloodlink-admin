@@ -11,9 +11,26 @@
         font-weight: 500;
         font-style: normal;
       
+      
 }
+.border-glow:hover{
+    box-shadow: 0px 5px 50px 0px #007ACC;
+}
+.hero-img{
+    background-image: url("https://www.transparenttextures.com/patterns/black-lozenge.png");
+    
+}
+
 /* .primary-bg {
     
     background-color: rgb(24 28 38 / 1);
 background-image: url("https://www.transparenttextures.com/patterns/black-lozenge.png");
 } */
+*{
+    
+    overflow-x: hidden;
+
+}
+body {
+    padding-top: 0px; /* Adjust this value to match the height of your navbar */
+  }

@@ -3,9 +3,9 @@ import Nav  from '../components/Nav'
 import Hero from '../components/Hero'
 
 function Home() {
-    console.log('Home')
+  
   return (
-    <div className='primary-bg w-full h-screen  text-white'>
+    <div className='primary-bg w-full h-screen text-white '>
         <Nav/>
         <Hero/>
     </div>
