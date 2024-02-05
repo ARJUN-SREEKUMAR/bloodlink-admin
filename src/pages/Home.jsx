@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className='primary-bg w-full h-screen text-white '>
         <Nav/>
-        <Hero/>
+        <Hero />
     </div>
   )
 }
