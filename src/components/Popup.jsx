@@ -14,7 +14,7 @@ export default function () {
     <div  className=" fixed  h-screen w-full flex   items-center  justify-center backdrop-blur-lg   z-50    ">
       
       <div className="   backdrop-filter   backdrop-blur-3xl   m-4 md:w-3/5 w-full h-96 glass border-sky-300 border rounded-3xl box flex   flex-col gap-6  justify-center items-center">
-        <div>
+        <div className="">
         <MdCloseFullscreen/>
         </div>
         <div className=" text-lg primary-font">Please Enter your Admin Credentials  </div>
