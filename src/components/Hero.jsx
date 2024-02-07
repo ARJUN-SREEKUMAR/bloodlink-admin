@@ -3,15 +3,19 @@ import "../Global.css";
 import HERO from "../assets/hero02.png";
 import HERO2 from "../assets/hero01.png";
 import { useState,useEffect,useRef } from "react";
-import Popup from "./Popup";
+import { togglePopup } from "../Slice/popupSlice";
+import { useDispatch,useSelector } from "react-redux";
+
 
 
 function Hero() {
-    
+    const pop =useSelector((select)=>select.popup.value)
+    const dispatch=useDispatch()
     const heroimgref = useRef(null)
     const [clicked, setclicked] = useState(false)
     function handleClick() {
         setclicked(true);
+        dispatch(togglePopup())
     }
    
     
@@ -20,7 +24,7 @@ function Hero() {
     <div className="py-40 z-10 " ref={heroimgref}>
 
       <div className=" flex md:flex-row-reverse flex-wrap md:pt-2   xl:px-40 justify-center " >
-        <img src={HERO} alt="some image is there "  className="      w-3/4 lg:w-1/3 md:w-1/2 h-auto  "/>
+        <img src={HERO} alt="some image is there "  className={` w-3/4 lg:w-1/3 md:w-1/2 h-auto ${pop?'2xl:fixed 2xl:left-10 2xl:top-56' : ''}  ` }/>
         <div className=" flex flex-col items-center p-10 2xl:my-auto lg:gap-y-8 gap-y-2 w-full md:w-3/5 ">
           <h1 className=" text-xl md:text-2xl  2xl:text-4xl primary-font ">blood Link </h1>
           {/* <p className="md:text-2xl text-base text-nowrap primary-font px-12 ">Revolutionizing Blood Donation Management</p> */}
@@ -33,8 +37,9 @@ function Hero() {
         </div>
       </div>
 
+    
 
-      <div className=" flex md:flex-row flex-wrap md:pt-2  xl:px-40 justify-center">
+      <div className=" z-50 flex md:flex-row flex-wrap md:pt-2  xl:px-40 justify-center">
         <img src={HERO2} alt="some image is there "  className="   w-3/4 lg:w-1/3  md:w-1/2 h-auto  "/>
         <div className=" flex flex-col items-center p-10 2xl:my-auto  lg:gap-y-8 gap-y-2 w-full md:w-3/5 ">
           <h1 className=" text-xl md:text-2xl  2xl:text-4xl primary-font ">blood Link Admin </h1>
@@ -46,9 +51,7 @@ function Hero() {
             register as Admin
           </button>
         </div>
-        {clicked && (
-        <Popup/>
-      )}
+      
       </div>
       
     </div>

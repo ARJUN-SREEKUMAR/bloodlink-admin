@@ -2,12 +2,17 @@ import React from "react";
 import "../Global.css";
 import Popup from "./Popup";
 import { useState } from "react";
+import { togglePopup } from "../Slice/popupSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 
 function Nav() {
-const [clicked, setclicked] = useState(false)
+// const [clicked, setclicked] = useState(false)
+const popupGState = useSelector((state)=> state.popup.value)
+const dispatch= useDispatch() //dispaching hoock reference created 
+console.log(popupGState)
 function handleClick() {
-  console.log("dfdf")
-  setclicked(true)
+  dispatch(togglePopup())
 }
   return (
     <div className="w-full fixed top-0  primary-bg  ">
@@ -23,7 +28,7 @@ function handleClick() {
           
         </div>
       </div>
-      {clicked && (
+      {popupGState && (
         <Popup/>
       )}
     </div>
