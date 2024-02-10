@@ -10,6 +10,7 @@ export const popupSlice = createSlice(
         togglePopup:(state)=>{
             state.value=!state.value;
         }
+         
     }
     
     },

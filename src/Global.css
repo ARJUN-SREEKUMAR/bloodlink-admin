@@ -27,6 +27,25 @@
 }
 .glass{
     background:rgba(54, 54, 56, 0.15);
+
+}
+/* .selected{
+    background-color: #b1dce9;
+    color: #181C26;
+    
+} */
+.selected{
+    background-color: #b1dce9;
+    color: #181C26;
+    transition: background-color 0.4s ease-in;
+}
+.blue-glass{
+    background: rgba( 0, 122, 204, 0.4 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 5.5px );
+-webkit-backdrop-filter: blur( 5.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 /* .primary-bg {
