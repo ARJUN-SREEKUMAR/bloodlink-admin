@@ -2,12 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="src/assets/fav.png" />
+          <link rel="icon" type="image/svg+xml" href="src/assets/fav.png" />
           <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+          <link rel="manifest" href="/manifest.json">
           <link href="./src/Global.css " rel="stylesheet" >
+     <meta name="theme-color" content="#007ACC">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(function(registration) {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+
+
+
     <title>Blood Link </title>
   </head>
   <body>
