@@ -1,23 +1,40 @@
-import React, { useState } from "react";
+import '../Global.css'
 import { IoMdClose } from "react-icons/io";
 import { togglePopup } from "../Slice/popupSlice";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toggleLogged } from "../Slice/userSlice";
-import '../Global.css'
+import { BiSolidShow ,BiSolidHide } from "react-icons/bi";
+import app  from "../Firebase/config";
+import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
 export default function () {
+  const auth = getAuth(app);
+  const mail =useRef('')
+  const pass = useRef('')
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
   const handleClose = () => {
-    dispatch(togglePopup()), 300;
+    dispatch(togglePopup());
     setIsOpen(!isOpen);
+    console.log(import.meta.env.VITE_FIREBASE_API_KEY);
   };
+  const [show, setshow] = useState(false)
+ const handleshow=()=>{
+    setshow(!show);
+  }
   const handleLogin = () => {
     dispatch(togglePopup());
+    const email=mail.current
+    console.log(email);
+    const password =pass.current
+    console.log(password);
+
+
     navigate("/dashboard");
     dispatch(toggleLogged());
   };
-  const dispatch = useDispatch();
   return (
     <div
       className={`fixed h-screen w-full flex justify-center backdrop-blur-lg  transition duration-1000 ${
@@ -34,17 +51,30 @@ export default function () {
         <div className=" text-lg xl:text-2xl primary-font text-sky-400  ">
           Please Enter your Admin Credentials{" "}
         </div>
-
+//!input 1
         <input
           type="text  "
           placeholder="username"
-          className="   primary-font text-center text-sky-400 text-xl h-9 focus:border-sky-500 focus:text-2xl border border-sky-300 focus:outline-none  glass rounded-3xl  "
-        ></input>
+          className="   primary-font text-center px-5   text-sky-400 text-xl h-9 focus:border-sky-500 border border-sky-300 focus:outline-none  glass rounded-3xl  " 
+         ref={mail}
+        />
+
+          <div className=" primary-font text-center px-5    text-sky-400 text-xl h-9   focus:border-sky-500 focus:text-2xl border border-sky-300 lfocus:outline-none glass rounded-3xl overflow-hidden  ">
+ //!input 2
+
         <input
-          type="password"
+          type={show?'text':'password'}
           placeholder="password"
-          className=" primary-font text-center text-sky-400 text-xl h-9 focus:border-sky-500 focus:text-2xl border border-sky-300 focus:outline-none glass rounded-3xl "
-        ></input>
+          className=" relative  bg-transparent text-center focus:outline-none  top-1     "
+       ref={pass}
+        />
+   
+            <button onClick={handleshow} className=" relative  focus:outline-none top-2">
+              {
+                show?<BiSolidHide/>:<BiSolidShow/>
+              }
+            </button>
+          </div>
 
         <button
           type="submit"
