@@ -51,7 +51,7 @@ export default function () {
         <div className=" text-lg xl:text-2xl primary-font text-sky-400  ">
           Please Enter your Admin Credentials{" "}
         </div>
-//!input 1
+
         <input
           type="text  "
           placeholder="username"
@@ -60,7 +60,7 @@ export default function () {
         />
 
           <div className=" primary-font text-center px-5    text-sky-400 text-xl h-9   focus:border-sky-500 focus:text-2xl border border-sky-300 lfocus:outline-none glass rounded-3xl overflow-hidden  ">
- //!input 2
+
 
         <input
           type={show?'text':'password'}
