@@ -6,10 +6,12 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toggleLogged } from "../Slice/userSlice";
 import { BiSolidShow ,BiSolidHide } from "react-icons/bi";
-import app  from "../Firebase/config";
-import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
+import {auth,db}  from "../Firebase/config"; //my config file
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { collection,  query, where, getDocs  } from 'firebase/firestore';
+// import { query } from "firebase/database";
 export default function () {
-  const auth = getAuth(app);
+
   const mail =useRef('')
   const pass = useRef('')
   const dispatch = useDispatch();
@@ -18,22 +20,37 @@ export default function () {
   const handleClose = () => {
     dispatch(togglePopup());
     setIsOpen(!isOpen);
-    console.log(import.meta.env.VITE_FIREBASE_API_KEY);
   };
   const [show, setshow] = useState(false)
  const handleshow=()=>{
     setshow(!show);
   }
-  const handleLogin = () => {
-    dispatch(togglePopup());
-    const email=mail.current
-    console.log(email);
-    const password =pass.current
-    console.log(password);
-
-
-    navigate("/dashboard");
-    dispatch(toggleLogged());
+  const handleLogin = async () => {
+    const email=mail.current.value
+    const password =pass.current.value
+    const adminCollection= collection(db,'admins')
+    try {
+    
+      const q = query(adminCollection, where("email", "==", email));
+      const results =await getDocs(q)
+      console.log(results.docs[0].data())
+        if (!results.empty) //login only if the mail is present in the admin 
+         {
+          await signInWithEmailAndPassword(auth, email, password);
+          localStorage.setItem("user",JSON.stringify(results.docs[0].data()))
+          const localUser=localStorage.getItem("user")
+          // console.log(localUser)
+          navigate("/dashboard");
+          dispatch(togglePopup());
+          dispatch(toggleLogged(localUser));
+          
+        }
+   
+    } catch (error) {
+      alert(error)
+    }
+    
+   
   };
   return (
     <div

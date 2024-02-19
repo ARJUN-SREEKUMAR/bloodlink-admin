@@ -7,8 +7,9 @@ export const userSlice=createSlice(
         user:null
     },
     reducers:{
-        toggleLogged:(state)=>{
-            state.isLogged=!state.isLogged;
+        toggleLogged:(state,action)=>{
+            state.isLogged=true;
+            state.user=action.value
         }
         
     }

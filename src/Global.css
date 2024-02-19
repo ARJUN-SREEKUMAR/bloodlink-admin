@@ -68,4 +68,6 @@ body {
     
   }
   
-  
+  input:focus:-webkit-autofill {
+    background-color: transparent; /* Set background color to transparent */
+}
