@@ -23,7 +23,7 @@ function Hero() {
     <div className="my-40 overflow-auto  " ref={heroimgref}>
 
       <div className=" flex md:flex-row-reverse flex-wrap md:pt-2   xl:px-40 justify-center " >
-        <img src={HERO} a  t="some image is there "   className={` w-3/4 lg:w-[39%] md:w-1/2 h-auto ${pop?'2xl:fixed 2xl:left-10 2xl:top-56' : ''}  ` }/>
+        <img src={HERO} alt="some image is there "   className={` w-3/4 lg:w-[39%] md:w-1/2 h-auto ${pop?'2xl:fixed 2xl:left-10 2xl:top-56' : ''}  ` }/>
         <div className=" flex flex-col items-center p-10 2xl:my-auto lg:gap-y-8 gap-y-2 w-full md:w-3/5 ">
           <h1 className=" text-xl md:text-2xl  2xl:text-4xl primary-font ">blood Link </h1>
           {/* <p className="md:text-2xl text-base text-nowrap primary-font px-12 ">Revolutionizing Blood Donation Management</p> */}

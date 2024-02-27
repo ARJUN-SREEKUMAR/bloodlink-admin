@@ -1,7 +1,9 @@
 import './Global.css'
-import Admin from './pages/Admin'
-import Home from './pages/Home'
-import PageNotFound from './pages/404'
+import {lazy, Suspense} from 'react'
+import Loading from './components/Loading';
+const Admin = lazy(() => import('./pages/Admin'));
+const Home = lazy(() => import('./pages/Home'));
+const PageNotFound = lazy(() => import('./pages/404'));
 import "./Global.css";
 import {BrowserRouter,Routes, Route  } from 'react-router-dom'
 function App() {
@@ -10,16 +12,17 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-         <Route path='/' element={<Home/>} />
-         <Route path='/dashboard' element={<Admin/>}/>
-         <Route  path="*" element={<PageNotFound />}
-          />
-        </Routes>
-          
+        <Suspense fallback={
+         <Loading/>
+        }>
+          <Routes>
+            <Route path='/dashboard' element={<Admin/>}/>
+            <Route  path="*" element={<PageNotFound />} />
+            <Route path='/' element={<Home/>} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </>
   )
 }
-
 export default App

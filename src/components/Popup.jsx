@@ -1,24 +1,27 @@
 import '../Global.css'
 import { IoMdClose } from "react-icons/io";
 import { togglePopup } from "../Slice/popupSlice";
+import {toggleload,} from '../Slice/uiSlice'
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toggleLogged } from "../Slice/userSlice";
 import { BiSolidShow ,BiSolidHide } from "react-icons/bi";
 import {auth,db}  from "../Firebase/config"; //my config file
+
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { collection,  query, where, getDocs  } from 'firebase/firestore';
 // import { query } from "firebase/database";
 export default function () {
 
-  const mail =useRef('')
+  const mail =useRef('');
   const pass = useRef('')
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
+  const [isError, setIserror] = useState(false);
   const handleClose = () => {
-    dispatch(togglePopup());
+    dispatch(togglePopup(false));
     setIsOpen(!isOpen);
   };
   const [show, setshow] = useState(false)
@@ -29,6 +32,9 @@ export default function () {
     const email=mail.current.value
     const password =pass.current.value
     const adminCollection= collection(db,'admins')
+    
+    dispatch(toggleload(true));
+    dispatch(togglePopup(false));
     try {
     
       const q = query(adminCollection, where("email", "==", email));
@@ -41,13 +47,17 @@ export default function () {
           const localUser=localStorage.getItem("user")
           // console.log(localUser)
           navigate("/dashboard");
-          dispatch(togglePopup());
+         
           dispatch(toggleLogged(localUser));
           
         }
-   
+        dispatch(toggleload(false));
     } catch (error) {
-      alert(error)
+      setIserror(true)
+      
+              dispatch(toggleload(false));
+              dispatch(togglePopup(true));
+            
     }
     
    
@@ -65,14 +75,14 @@ export default function () {
         >
           <IoMdClose className="animate-pulse  " />
         </div>
-        <div className=" text-lg xl:text-2xl primary-font text-sky-400  ">
+        <div className={` text-lg xl:text-2xl primary-font  ${!isError? "text-sky-400":"text-red-700" } `}>
           Please Enter your Admin Credentials{" "}
         </div>
 
         <input
           type="text  "
           placeholder="username"
-          className="   primary-font text-center px-5   text-sky-400 text-xl h-9 focus:border-sky-500 border border-sky-300 focus:outline-none  glass rounded-3xl  " 
+          className="   primary-font text-center flex  px-5   text-sky-400 text-xl h-9 focus:border-sky-500 border border-sky-300 focus:outline-none  glass rounded-3xl  " 
          ref={mail}
         />
 

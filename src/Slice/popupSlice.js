@@ -7,8 +7,8 @@ export const popupSlice = createSlice(
         value:false
     },
     reducers:{
-        togglePopup:(state)=>{
-            state.value=!state.value;
+        togglePopup:(state,action)=>{
+            state.value=action.payload;
         }
          
     }
