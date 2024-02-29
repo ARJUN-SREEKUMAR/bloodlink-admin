@@ -3,8 +3,11 @@ import Nav from '../components/Nav'
 import Bottombar from '../components/Bottombar'
 import { useSelector } from "react-redux";
 import { useState } from 'react';
-import AdminHome from '../components/AdminHome'
-import AdminRequest from '../components/AdminRequest'
+import AdminHome from '../components/Admin/AdminHome'
+import AdminRequest from '../components/Admin/AdminRequest'
+import AdminSetting from '../components/Admin/AdminSetting';
+import AdminAlerts from '../components/Admin/AdminAlerts';
+
 function Admin() {
 let sectionState =useSelector((state)=>state.admin.value)
   return (
@@ -17,8 +20,8 @@ let sectionState =useSelector((state)=>state.admin.value)
           {sectionState==="requests" &&(<div className=" relative  w-full  h-full     text-center text-4xl"> 
           <AdminRequest/>
           </div>)}
-          {sectionState==="alerts" &&(<div className=" relative  w-full  h-full    text-center text-4xl"> alerts</div>)}
-          {sectionState==="settings" &&(<div className=" relative   w-full  h-full     text-center text-4xl"> Settings</div>)}
+          {sectionState==="alerts" &&(<div className=" relative  w-full  h-full    text-center text-4xl"><AdminAlerts/> </div>)}
+          {sectionState==="settings" &&(<div className=" relative   w-full  h-full     text-center text-4xl"><AdminSetting/></div>)}
             <Bottombar></Bottombar>
               </div>
             

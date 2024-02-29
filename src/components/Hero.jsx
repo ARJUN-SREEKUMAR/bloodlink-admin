@@ -30,9 +30,11 @@ function Hero() {
           <p className="  text-sky-100 md:text-xl py-1 text-justify  primary-font ">
           Welcome to Blood Link, your go-to solution for efficient and organized blood donation management.Our app is designed to streamline the blood donation process, connecting donors with those in need seamlessly, ensuring a swift and life-saving response to critical situations.
             </p>
-            <button className="  primary-font   text-sky-300  p-2 border-solid border-2 rounded   border-sky-900  hover:text-sky-200 border-glow text-sm md:text-lg hover:border-glow">
-            download Now
-          </button>
+            <a href="https://cloud.appwrite.io/v1/storage/buckets/65df4521cf29031e4437/files/65df453b457f7ee20b55/download?project=65df449c602884c5e7b1&mode=admin" download >
+              <button className="  primary-font   text-sky-300  p-2 border-solid border-2 rounded   border-sky-900  hover:text-sky-200 border-glow text-sm md:text-lg hover:border-glow">
+              download Now
+                        </button>
+            </a>
         </div>
       </div>
 

@@ -25,7 +25,7 @@ function Bottombar() {
         <div className={` cursor-pointer flex ${Section==='requests'?  'selected':''}   flex-col h-[80%]  items-center justify-center  rounded-xl m-2   w-[80%]  group  text-2xl hover:text-base `}  onClick={()=>handleclick("requests")}><MdAddToHomeScreen/> <div className=' hidden group-hover:block    '>
           Requests
           </div></div>
-        <div className={` cursor-pointer flex ${Section==='alerts'?  'selected':''}  flex-col h-[80%]  items-center justify-center  rounded-xl m-2   w-[80%]  group  text-2xl hover:text-base `}onClick={()=>handleclick("alerts")}><FaBell className=' animate-bounce'/> <div className=' hidden group-hover:block    ' >
+        <div className={` cursor-pointer flex ${Section==='alerts'?  'selected':''}  flex-col h-[80%]  items-center justify-center  rounded-xl m-2   w-[80%]  group  text-2xl hover:text-base `}onClick={()=>handleclick("alerts")}><FaBell className=' '/> <div className=' hidden group-hover:block    ' >
           Alerts
           </div></div>
         <div className={` cursor-pointer flex ${Section==='settings'?  'selected':''}  flex-col h-[80%]  items-center justify-center  rounded-xl m-2   w-[80%]  group  text-2xl hover:text-base `} onClick={()=>handleclick("settings")}><RiUserSettingsFill/> <div className=' hidden group-hover:block    ' >

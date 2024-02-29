@@ -35,8 +35,9 @@
     
 } */
 .selected{
-    background-color: #51caef;
-    color: #000000;
+    /* background-color: #51caef; */
+    background-color: #243647;
+    color: #ffff;
     transition: background-color 0.4s ease-in;
 }
 .blue-glass-admin{
